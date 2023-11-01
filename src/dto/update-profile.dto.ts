@@ -9,12 +9,4 @@ export class UpdateProfileDto {
         example: 'nhập họ và tên của bạn',
       })
     readonly fullName: string;
-  
-    @IsOptional()
-    @IsString()
-    @ApiProperty({
-        description: 'Email',
-        example: 'youremail@gmail.com',
-      })
-    readonly email: string;
-}
+  }

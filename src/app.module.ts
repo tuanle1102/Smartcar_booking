@@ -2,21 +2,16 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
-import { JwtModule } from '@nestjs/jwt';
-import { AuthModule } from './module/auth/auth.module';
-import { JwtAuthService } from './services/jwt.service';
-import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { DriverModule } from './module/driver/driver.module';
+import { UserModule } from './module/user/user.module';
+import { BookingModule } from './module/booking/booking.module';
+
 
 @Module({
   imports: [
-    JwtModule.register({
-      global: true,
-      secret: '12345',
-      signOptions: { expiresIn: '3d' },
-    }),
-    MongooseModule.forRoot('mongodb+srv://1102lequoctuan:pass@cluster0.ic0tt4u.mongodb.net/'),AuthModule
+    MongooseModule.forRoot('mongodb+srv://1102lequoctuan:pass@cluster0.ic0tt4u.mongodb.net/'), DriverModule,UserModule,BookingModule
   ],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }
