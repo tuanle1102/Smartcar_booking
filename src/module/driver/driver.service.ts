@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Driver } from '../../entities/driver.entity';
 import { TwilioService } from 'src/module/twilio/twilio.service';
-import { Model } from 'mongoose';
+import mongoose, { Model } from 'mongoose';
 import { RegisterDto } from 'src/dto/register.dto';
 import { UserRoles } from 'src/enum/user.enum';
 import { LoginDto } from 'src/dto/login.dto';
@@ -31,6 +31,7 @@ export class DriverService {
 
     // Create a user object
     const user = new this.driverModel({
+      _id: new mongoose.Types.ObjectId(),
       phoneNumber,
       otp,
       role: "DRIVER",

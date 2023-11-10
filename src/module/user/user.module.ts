@@ -10,5 +10,6 @@ import { TwilioService } from '../twilio/twilio.service';
   imports: [MongooseModule.forFeature([{ name: User.name, schema: UserSchema }])],
   controllers: [UserController],
   providers: [UserService,TwilioService],
+  exports: [UserService,MongooseModule.forFeature([{ name: User.name, schema: UserSchema }])]
 })
 export class UserModule {}

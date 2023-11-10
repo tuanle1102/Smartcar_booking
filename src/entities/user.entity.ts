@@ -1,12 +1,17 @@
 // user.schema.ts
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import { Document,SchemaTypes } from 'mongoose';
 import { UserRoles } from 'src/enum/user.enum';
+import { Review } from './rating.entity';
+import { Types } from 'mongoose';
+
 
 export type UserDocument = User & Document;
 
 @Schema()
 export class User {
+  @Prop({ type: SchemaTypes.ObjectId }) 
+  _id: Object;
   @Prop()
   fullname: string
   @Prop({ required: false, unique: false })
@@ -23,10 +28,8 @@ export class User {
   avatar: string;
   @Prop({ type: String })
   cccd: any
-  @Prop()
-  latitude: Number // Tọa độ latitude
-  @Prop()
-  longitude: Number // Tọa độ longitude
+  @Prop({ type: Object })
+  location: { lat: number, lon: number }
   @Prop({ type: String, enum: UserRoles, default: UserRoles.USER })
   role: UserRoles;
 }

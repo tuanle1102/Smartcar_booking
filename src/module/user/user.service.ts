@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { TwilioService } from '../twilio/twilio.service';
 import { InjectModel } from '@nestjs/mongoose';
 import { User } from 'src/entities/user.entity';
-import {Model} from 'mongoose'
+import mongoose, {Model} from 'mongoose'
 import { RegisterDto } from 'src/dto/register.dto';
 import { UserRoles } from 'src/enum/user.enum';
 import { LoginDto } from 'src/dto/login.dto';
@@ -27,6 +27,7 @@ export class UserService {
 
     // Create a user object
     const user = new this.userModel({
+      _id: new mongoose.Types.ObjectId(),
       phoneNumber,
       otp,
       role: "USER",
