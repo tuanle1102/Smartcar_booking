@@ -14,10 +14,6 @@ export class LoginDto {
   phoneNumber: string;
   @IsString()
   @IsNotEmpty()
-  @ApiProperty({
-    description: 'Vai trò',
-    example: 'DRIVER || USER',
-  })
   role: UserRoles;
   @IsString()
   @IsNotEmpty()

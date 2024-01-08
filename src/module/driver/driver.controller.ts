@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, Put, BadRequestException, Query } from '@nestjs/common';
 import { DriverService } from './driver.service';
-import { ApiBody, ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { RegisterDto } from 'src/dto/register.dto';
 import { VerifyOtpDto } from 'src/dto/verify-dto';
 import { LoginDto } from 'src/dto/login.dto';
@@ -8,7 +8,7 @@ import { UpdateDriverInfoDto } from 'src/dto/update-driver.dto';
 import { GetDriverByPhoneNumberDto } from 'src/dto/create-driver.dto';
 
 
-
+@ApiTags('Driver')
 @Controller('driver')
 export class DriverController {
   constructor(private readonly driverService: DriverService) { }

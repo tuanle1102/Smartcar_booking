@@ -1,11 +1,42 @@
-import { PartialType } from '@nestjs/mapped-types';
-import { CreateBookingDto } from './create-booking.dto';
+import { ApiProperty } from "@nestjs/swagger";
+import { IsString } from "class-validator";
 
-export class UpdateBookingDto extends PartialType(CreateBookingDto) { 
-
-    startLocation: { lat: number, lon: number };
-    endLocation: { lat: number, lon: number };
-    isCompleted: boolean;
-    driverId: string;
-  }
-  
+export class UpdateBookingDto {
+    @IsString()
+    @ApiProperty({
+        description: 'id người dùng',
+        example: '65990cfed5f27ba1152161f6',
+      })
+    readonly userId: string;
+    @IsString()
+    @ApiProperty({
+        description: 'id tài xế',
+        example: '6599129ae933db4619a3972f',
+      })
+    readonly driverId: string;
+    @IsString()
+    @ApiProperty({
+        description: 'Vị trí bắt đầu',
+        example: '{lat : 123.145,lon:452.12}',
+      })
+    readonly startLocation:  { lat: number, lon: number };
+    @IsString()
+    @ApiProperty({
+        description: 'Vị trí kết thúc',
+        example: '{ lat: 452.12,lon: 589.21 }',
+      })
+    readonly endLocation: { lat: number, lon: number };
+    @IsString()
+    @ApiProperty({
+        description: 'Giá tiền',
+        example: '50000',
+      })
+    readonly totalPrice: number;
+    @IsString()
+    @ApiProperty({
+        description: 'Trạng thái chuyến đi',
+        example: 'true',
+      })
+    readonly isCompleted: boolean;
+    
+}

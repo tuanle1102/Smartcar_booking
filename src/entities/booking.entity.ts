@@ -18,6 +18,8 @@ export class Booking {
   @Prop({ type: Object })
   endLocation: { lat: number, lon: number }; // Vị trí kết thúc
   @Prop()
+  weight: string;
+  @Prop()
   totalPrice: number;
   @Prop({default: false})
   isPaid: boolean

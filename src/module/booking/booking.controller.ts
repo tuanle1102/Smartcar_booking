@@ -1,6 +1,6 @@
 import { Controller, Post, Body, Get, Param, Query, Put, Delete, NotFoundException } from '@nestjs/common';
 import { Model } from 'mongoose';
-import { BookingService } from './booking.service'; // Import service cho Booking
+import { BookingService } from './booking.service';
 import { CreateBookingDto } from '../../dto/create-booking.dto';
 import { DriverService } from '../driver/driver.service';
 import { SearchBookingDto } from 'src/dto/searchbooking.dto';
@@ -9,9 +9,10 @@ import { RatingDto } from 'src/dto/rating.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { Booking } from 'src/entities/booking.entity';
 import { UpdateReviewDto } from 'src/dto/update-review.dto';
-import { DeleteReviewDto } from 'src/dto/reviews.dto';
 import { User, UserDocument } from 'src/entities/user.entity';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Booking')
 @Controller('booking')
 export class BookingController {
   constructor(
